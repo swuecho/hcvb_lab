@@ -51,3 +51,9 @@ def get_changed_tcr_ids(copy_log_of_today):
      return(list(set(ids)))
 
 
+def get_changed_run(copy_log_of_today):
+     with open(copy_log_of_today, 'r') as f:
+         for item in f:
+             if 'copying' in item:
+                 run_path = os.path.dirname(item.split()[-1])
+                 return os.path.dirname(item.split()[-1]).split('/')[4]
