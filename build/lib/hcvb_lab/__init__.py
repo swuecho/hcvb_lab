@@ -40,11 +40,6 @@ def extract_tcr_id(item):
         sample_name = csv.rstrip('.csv')
         return '_'.join(sample_name.split('_')[0:2])
 
-def copy_log_of_today():
-    LOG_ROOT ='/home/hwu/analysis_logs'
-    copy_log_of_today = os.path.join(LOG_ROOT, "copy_log", "%s.log" % (dt.datetime.today().strftime("%Y-%m-%d")))
-    return(copy_log_of_today)
-
 def get_changed_tcr_ids(copy_log_of_today):
      ids = []
      with open(copy_log_of_today, 'r') as f:
@@ -62,6 +57,3 @@ def get_changed_run(copy_log_of_today):
              if 'copying' in item:
                  run_path = os.path.dirname(item.split()[-1])
                  return os.path.dirname(item.split()[-1]).split('/')[4]
-
-
-
