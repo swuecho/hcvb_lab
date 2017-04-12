@@ -1,3 +1,11 @@
+import os
+import datetime as dt
+import hashlib
+
+def make_dir_if_not_exist(target_dir):
+     if not os.path.exists(target_dir): 
+                os.makedirs(target_dir)
+
 def is_bcr(file_name):
     uc_file_name = file_name.upper()
     indicators = ['BCR',  'IGM', 'IGG', 'IGH', 'IGVH']
@@ -63,5 +71,7 @@ def get_changed_run(copy_log_of_today):
                  run_path = os.path.dirname(item.split()[-1])
                  return os.path.dirname(item.split()[-1]).split('/')[4]
 
-
+def hash_of_dir(root_dir):
+    root_hash = hashlib.sha224(root_dir.encode('utf-8')).hexdigest()[0:6]
+    return root_hash
 
