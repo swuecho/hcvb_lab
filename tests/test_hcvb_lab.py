@@ -1,5 +1,5 @@
 import unittest
-import hcvb_lab
+from context import hcvb_lab
 
 class HcvbLabTest(unittest.TestCase):
     def test_is_bcr_01(self):
@@ -10,9 +10,6 @@ class HcvbLabTest(unittest.TestCase):
 
     def test_is_bcr_03(self):
         self.assertFalse(hcvb_lab.is_bcr('10311_c_PB_T_CD8_817944_TCR_vb'))
-
-
-
 
 
 

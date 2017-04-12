@@ -1,3 +1,5 @@
 build/*
 dist/*
+.cache/*
 hcvb_lab.egg-info/*
+tests/__pycache__/*
