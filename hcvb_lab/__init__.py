@@ -4,11 +4,21 @@ import hashlib
 
 ANALYSIS_PATH = '/home/hwu/analysis/'
 RESULT_PATH = '/home/hwu/downstream/result/'
+LOG_ROOT ='/home/hwu/analysis_logs'
+
+## FILE AND DIR related 
+def line_number(file_path):
+    with open(file_path, "r") as f:
+        line_count = len(set(f.readlines()))
+    return line_count
 
 def make_dir_if_not_exist(target_dir):
      if not os.path.exists(target_dir): 
-                os.makedirs(target_dir)
+        os.makedirs(target_dir)
 
+
+
+### Lab Project related
 def is_bcr(file_name):
     uc_file_name = file_name.upper()
     indicators = ['BCR',  'IGM', 'IGG', 'IGH', 'IGVH']
@@ -52,7 +62,6 @@ def extract_tcr_id(item):
         return '_'.join(sample_name.split('_')[0:2])
 
 def copy_log_of_today():
-    LOG_ROOT ='/home/hwu/analysis_logs'
     copy_log_of_today = os.path.join(LOG_ROOT, "copy_log", "%s.log" % (dt.datetime.today().strftime("%Y-%m-%d")))
     return(copy_log_of_today)
 
@@ -95,7 +104,3 @@ def bcr_configs():
     return(specific_config)
 
 
-def line_number(file_path):
-    with open(file_path, "r") as f:
-        line_count = len(set(f.readlines()))
-    return line_count
