@@ -2,6 +2,9 @@ import os
 import datetime as dt
 import hashlib
 
+ANALYSIS_PATH = '/home/hwu/analysis/'
+RESULT_PATH = '/home/hwu/downstream/result/'
+
 def make_dir_if_not_exist(target_dir):
      if not os.path.exists(target_dir): 
                 os.makedirs(target_dir)
@@ -75,3 +78,24 @@ def hash_of_dir(root_dir):
     root_hash = hashlib.sha224(root_dir.encode('utf-8')).hexdigest()[0:6]
     return root_hash
 
+
+def get_project_ids(project_name):
+    current_path = '/home/hwu/downstream/project_summay/project'
+    with open(os.path.join(current_path,project_name + '.csv')) as fp:
+        fp.readline() # remove the ids
+        ids = fp.read().splitlines()
+    return(ids)
+
+def bcr_configs():
+    specific_config = [
+        "_".join([method, str(distance), 'len_8', 'count', str(count)])
+        for count in range(1, 3) for distance in range(
+            0, 3) for method in ['lv', 'hamming']
+    ]
+    return(specific_config)
+
+
+def line_number(file_path):
+    with open(file_path, "r") as f:
+        line_count = len(set(f.readlines()))
+    return line_count
