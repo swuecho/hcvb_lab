@@ -26,6 +26,13 @@ def is_bcr(file_name):
     bcr = any([ x in uc_file_name for x in indicators])
     return bcr
 
+def is_igg(sample_name):
+    uc_sample_name = sample_name.upper()
+    reslut =  'IGG' in uc_file_name
+    return(reslut)
+    
+
+    #TODO: add key work for TCR and check the key work is not in filename
 def raw_data_dir_to_analysi_dir(raw_data_dir):
     """ remove the 'Auto_user_SN2 in dirname
     """
