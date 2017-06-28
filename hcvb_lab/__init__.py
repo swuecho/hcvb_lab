@@ -28,7 +28,7 @@ def is_bcr(file_name):
 
 def is_igg(sample_name):
     uc_sample_name = sample_name.upper()
-    reslut =  'IGG' in uc_file_name
+    reslut =  'IGG' in uc_sample_name
     return(reslut)
     
 
