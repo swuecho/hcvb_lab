@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='hcvb_lab',
-      version='0.0.6',
+      version='0.0.7',
       description='util in hcvb lab',
       author='Hao Wu',
       author_email='echowuhao@gmail.com',

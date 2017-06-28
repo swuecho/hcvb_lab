@@ -90,6 +90,15 @@ def get_changed_run(copy_log_of_today):
                  run_path = os.path.dirname(item.split()[-1])
                  return os.path.dirname(item.split()[-1]).split('/')[4]
 
+def get_changed_runs(copy_log_of_today):
+     runs = set()
+     with open(copy_log_of_today, 'r') as f:
+         for item in f:
+             if 'copying' in item:
+                run_path = os.path.dirname(item.split()[-1])
+                runs.add(os.path.dirname(item.split()[-1]).split('/')[4])
+     return runs
+
 def hash_of_dir(root_dir):
     root_hash = hashlib.sha224(root_dir.encode('utf-8')).hexdigest()[0:6]
     return root_hash
